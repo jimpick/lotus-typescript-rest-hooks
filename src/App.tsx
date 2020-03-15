@@ -1,29 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Layout, Menu } from "antd";
+import Routes from "./Routes";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>
-          Hi Jim! Wooo!!!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const { Header, Content } = Layout;
 
-export default App;
+export default () => (
+  <Layout>
+    <Header className="header">
+      <div className="logo" />
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={["1"]}
+        style={{ lineHeight: "64px" }}
+      >
+        <Menu.Item key="1">
+          <Link to="/">React Issues</Link>
+        </Menu.Item>
+        <Menu.Item key="2">
+          <Link to="/closed">Closed</Link>
+        </Menu.Item>
+        <Menu.Item key="3">
+          <Link to="/open">Open</Link>
+        </Menu.Item>
+        {/*<Menu.Item key="4"><Link to="/profile">Profile</Link></Menu.Item>*/}
+      </Menu>
+    </Header>
+    <Content
+      style={{
+        background: "#fff",
+        padding: 24,
+        margin: 0,
+        minHeight: 280
+      }}
+    >
+      <Routes />
+    </Content>
+  </Layout>
+);
