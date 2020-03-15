@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { BrowserRouter } from "react-router-dom";
+import { CacheProvider } from "rest-hooks";
 import * as serviceWorker from './serviceWorker';
+
+import App from './App';
+
+import "antd/dist/antd.css";
+import "./styles.css";
 
 ReactDOM.createRoot(
   document.querySelector('#root')!
-).render(<App />);
+).render(
+  <CacheProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </CacheProvider>
+);
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 
