@@ -5,7 +5,7 @@ import {
 
 export default class VersionResource extends Resource {
   readonly version: string = '';
-  readonly apiVersion: string = '';
+  readonly apiVersion: number = 0;
   readonly blockDelay: number = 0;
   static currentShape<T extends typeof Resource>(this: T) {
     return {

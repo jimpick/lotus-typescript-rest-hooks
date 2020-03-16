@@ -7,6 +7,7 @@ import IssueList from "./pages/IssueList";
 import IssueDetail from "./pages/IssueDetail";
 import ProfileDetail from "./pages/ProfileDetail";
 import Version from "./pages/Version";
+import VersionWS1 from "./pages/VersionWS1";
 
 // const repo: string = "https://api.github.com/repos/facebook/react"
 const repo: string = "https://api.github.com/repos/filecoin-project/lotus"
@@ -70,6 +71,7 @@ export default () => (
         />
         <Route exact path="/profile" component={ProfileDetail} />
         <Route exact path="/version" component={Version} />
+        <Route exact path="/versionws1" component={VersionWS1} />
       </Switch>
     </NetworkErrorBoundary>
   </Suspense>
