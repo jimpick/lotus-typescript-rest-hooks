@@ -20,7 +20,7 @@ export default class VersionWS1Resource extends Resource {
           params: [],
           id: 1
         }
-        return this.fetch('post', 'https://lotus.testground.ipfs.team/api/0/node/rpc/v0', body);
+        return this.fetch('post', 'wss://lotus.testground.ipfs.team/api/0/node/rpc/v0', body);
       },
     };
   }
@@ -33,15 +33,9 @@ export default class VersionWS1Resource extends Resource {
     body?: Readonly<object | string>,
   ) {
     const ws = new WebSocket(url)
-    const request = {
-      jsonrpc: '2.0',
-      id: 1,
-      method: 'Filecoin.Version',
-      params: []
-    }
     const promise = new Promise((resolve, reject) => {
       ws.onopen = function () {
-        ws.send(JSON.stringify(request))
+        ws.send(JSON.stringify(body))
       }
       ws.onmessage = function (event) {
         try {
@@ -50,7 +44,7 @@ export default class VersionWS1Resource extends Resource {
             Version: version,
             APIVersion: apiVersion,
             BlockDelay: blockDelay,
-          } = JSON.parse(event.data)
+          } = JSON.parse(event.data).result
           resolve({ version, apiVersion, blockDelay })
         } catch (e) {
           console.error(e)
