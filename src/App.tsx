@@ -24,6 +24,9 @@ export default () => (
         <Menu.Item key="3">
           <Link to="/open">Open</Link>
         </Menu.Item>
+        <Menu.Item key="4">
+          <Link to="/version">Version</Link>
+        </Menu.Item>
         {/*<Menu.Item key="4"><Link to="/profile">Profile</Link></Menu.Item>*/}
       </Menu>
     </Header>
