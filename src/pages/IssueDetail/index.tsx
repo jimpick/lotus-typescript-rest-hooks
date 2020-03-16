@@ -34,21 +34,27 @@ function ReactionSpan({
   );
 }
 
+/*
 export default function IssueDetail({
   match,
 }: RouteChildrenProps<{ number: string }>) {
+*/
+export default function IssueDetail({
+  match,
+  repositoryUrl
+}: RouteChildrenProps<{ number: string }> & { repositoryUrl: string }) {
   let number = 1;
   if (match && match.params && match.params.number) {
     number = Number.parseInt(match.params.number, 10);
   }
   useRetrieve(ReactionResource.listShape(), {
-    repositoryUrl: 'https://api.github.com/repos/facebook/react',
+    repositoryUrl,
     number,
   });
   const [issue] = useResource([
     IssueResource.detailShape(),
     {
-      repositoryUrl: 'https://api.github.com/repos/facebook/react',
+      repositoryUrl,
       number,
     },
   ]);

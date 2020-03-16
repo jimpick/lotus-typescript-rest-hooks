@@ -16,7 +16,7 @@ export default () => (
         style={{ lineHeight: "64px" }}
       >
         <Menu.Item key="1">
-          <Link to="/">React Issues</Link>
+          <Link to="/">Lotus Issues</Link>
         </Menu.Item>
         <Menu.Item key="2">
           <Link to="/closed">Closed</Link>

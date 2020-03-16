@@ -1,10 +1,14 @@
 import React, { Suspense } from "react";
+import { RouteChildrenProps } from 'react-router';
 import { Route, Switch, RouteProps } from "react-router-dom";
 import { NetworkErrorBoundary } from "rest-hooks";
 import { Spin } from "antd";
 import IssueList from "./pages/IssueList";
 import IssueDetail from "./pages/IssueDetail";
 import ProfileDetail from "./pages/ProfileDetail";
+
+// const repo: string = "https://api.github.com/repos/facebook/react"
+const repo: string = "https://api.github.com/repos/filecoin-project/lotus"
 
 export default () => (
   <Suspense
@@ -27,7 +31,7 @@ export default () => (
             );
             return (
               <IssueList
-                repositoryUrl="https://api.github.com/repos/facebook/react"
+                repositoryUrl={repo}
                 page={page}
               />
             );
@@ -38,7 +42,7 @@ export default () => (
           path="/closed"
           component={() => (
             <IssueList
-              repositoryUrl="https://api.github.com/repos/facebook/react"
+              repositoryUrl={repo}
               state="closed"
             />
           )}
@@ -48,13 +52,21 @@ export default () => (
           path="/open"
           component={() => (
             <IssueList
-              repositoryUrl="https://api.github.com/repos/facebook/react"
+              repositoryUrl={repo}
               state="open"
             />
           )}
         />
         <Route exact path="/issues" component={IssueList} />
-        <Route path="/issue/:number" component={IssueDetail} />
+        <Route
+          path="/issue/:number"
+            component={(props: RouteChildrenProps<{ number: string }>) => (
+            <IssueDetail
+              {...props}
+              repositoryUrl={repo}
+            />
+          )}
+        />
         <Route exact path="/profile" component={ProfileDetail} />
       </Switch>
     </NetworkErrorBoundary>
