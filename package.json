@@ -17,7 +17,7 @@
     "antd": "3.26.3",
     "lodash": "^4.17.15",
     "parse-link-header": "^1.0.1",
-    "react": "^0.0.0-experimental-8b155d261",
+    "react": "^0.14.0",
     "react-dom": "^0.0.0-experimental-8b155d261",
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.1.2",
